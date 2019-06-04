@@ -23,14 +23,21 @@
  * along with NextGen Gallery Tinymce Description editor. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+//No direct access to this file
 define('WPINC', 'ngg-tinymce-description-editor');
 if(!defined( 'WPINC')) die('Restricted access');
 
-if( is_admin() && isset($_GET['page']) && $_GET['page'] == 'nggallery-manage-gallery' ){    
+if( is_admin() && isset($_GET['page']) && $_GET['page'] == 'nggallery-manage-gallery' ){  
+    /*
+     * Scripts function used to enqueue tinymce scripts
+     * 
+     * @param wp_enqueue_script, wp_enqueue_style
+     * @return css and js scripts
+     */
     function scripts() {
-        wp_enqueue_style('tiny-style', plugins_url('/ngg-tinymce-description-editor/style.css'));
-        wp_enqueue_script('tinymce', 'https://cloud.tinymce.com/5/tinymce.min.js');
-        wp_enqueue_script('functions-js', plugins_url('/ngg-tinymce-description-editor/functions.js'));
+        wp_enqueue_style('tiny-style', plugins_url('/ngg-tinymce-description-editor/style.css')); // Enqueue cutom style
+        wp_enqueue_script('tinymce', 'https://cloud.tinymce.com/5/tinymce.min.js'); // Enqueue tinymce editor
+        wp_enqueue_script('functions-js', plugins_url('/ngg-tinymce-description-editor/functions.js')); // Enqueue js functions
     }
     add_action('admin_enqueue_scripts', 'scripts');
 }
