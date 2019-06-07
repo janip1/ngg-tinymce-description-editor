@@ -35,9 +35,9 @@ if( is_admin() && isset($_GET['page']) && $_GET['page'] == 'nggallery-manage-gal
      * @return css and js scripts
      */
     function scripts() {
-        wp_enqueue_style('tiny-style', plugins_url('/ngg-tinymce-description-editor/style.css')); // Enqueue cutom style
-        wp_enqueue_script('tinymce', 'https://cloud.tinymce.com/5/tinymce.min.js'); // Enqueue tinymce editor
-        wp_enqueue_script('functions-js', plugins_url('/ngg-tinymce-description-editor/functions.js')); // Enqueue js functions
+        wp_enqueue_script('tinymce', plugins_url( '/inc/tinymce/js/tinymce/tinymce.min.js', __FILE__ )); // Enqueue tinymce editor
+        wp_enqueue_script('functions-js', plugins_url('/functions.js', __FILE__)); // Enqueue js functions
+        wp_enqueue_style('tiny-style', plugins_url('/style.css', __FILE__)); // Enqueue cutom style
     }
     add_action('admin_enqueue_scripts', 'scripts');
 }
